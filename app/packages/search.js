@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
     if (!query || query.trim() === '') {
         return res.status(400).json({ message: "Query parameter 'q' cannot be empty" });
     }
-
+    
     const sql = `
         SELECT name, version, branch, arch, url, specfile, filename
         FROM packages
@@ -25,7 +25,7 @@ router.get('/', (req, res) => {
         }
         res.json({
             message: 'success',
-            package: rows[0]
+            packages: rows
         });
     });
 });
