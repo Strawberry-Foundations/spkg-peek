@@ -1,0 +1,4 @@
+{
+    "port": 3085,
+    "dbpath": "/var/spkg/packages.db"
+}
