@@ -1,0 +1,25 @@
+{
+  "name": "spkg-peek",
+  "version": "1.0.0",
+  "description": "API for spkg repositories",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Strawberry-Foundations/spkg-peek.git"
+  },
+  "keywords": [
+    "spkg"
+  ],
+  "author": "matteodev8",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Strawberry-Foundations/spkg-peek/issues"
+  },
+  "homepage": "https://github.com/Strawberry-Foundations/spkg-peek#readme",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
