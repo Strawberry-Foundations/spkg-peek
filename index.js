@@ -3,7 +3,6 @@ const fs = require('fs');
 const path = require('path');
 const favicon = require('serve-favicon');
 
-// Check if config exists, if not, use default
 const fileName = path.join(__dirname, 'config.json');
 const defaultConfig = {
     "port": 3085,
@@ -16,18 +15,22 @@ const defaultConfig = {
         }
     ]
 }
-if (!fs.existsSync(fileName)) {
-    fs.writeFileSync(fileName, JSON.stringify(defaultConfig, null, 4));
-    console.log(`${fileName} created with default values`);
+
+let config = {};
+
+if (fs.existsSync(fileName)) {
+    const existingConfig = JSON.parse(fs.readFileSync(fileName, 'utf8'));
+    config = { ...defaultConfig, ...existingConfig };
+} else {
+    config = defaultConfig;
 }
 
-const config = require('./config.json');
+fs.writeFileSync(fileName, JSON.stringify(config, null, 4));
+console.log(`${fileName} created with default values`);
 
-// Setup app
 const app = express();
 app.use(express.json());
 
-// Load config attributes
 const port = config.port;
 
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
