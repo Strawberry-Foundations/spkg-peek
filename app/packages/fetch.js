@@ -12,9 +12,9 @@ router.get('/', (req, res) => {
     const sql = `
         SELECT name, version, branch, arch, url, specfile, filename
         FROM packages
-        WHERE name LIKE ?
+        WHERE name = ?
     `;
-    const params = [`%${query}%`];
+    const params = [query];
 
     db.all(sql, params, (err, rows) => {
         if (err) {
