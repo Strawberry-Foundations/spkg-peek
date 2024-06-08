@@ -1,8 +1,15 @@
 const express = require('express');
 const router = express.Router();
 
+const { version } = require('../package.json');
+
 router.get('/', (req, res) => {
-    res.send("peek 1.0.0");
+    res.json({ 
+        message: 'success',
+        peek: {
+            version: version
+        }
+    });
 });
 
 // Endpoints
