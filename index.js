@@ -17,16 +17,20 @@ const defaultConfig = {
 }
 
 let config = {};
+let originalConfig = {};
 
 if (fs.existsSync(fileName)) {
-    const existingConfig = JSON.parse(fs.readFileSync(fileName, 'utf8'));
-    config = { ...defaultConfig, ...existingConfig };
+    originalConfig = JSON.parse(fs.readFileSync(fileName, 'utf8'));
+    config = { ...defaultConfig, ...originalConfig };
 } else {
     config = defaultConfig;
 }
 
 fs.writeFileSync(fileName, JSON.stringify(config, null, 4));
-console.log(`${fileName} created with default values`);
+
+if (JSON.stringify(originalConfig) !== JSON.stringify(config)) {
+    console.log(`📄 ${fileName} has been modified with default values`);
+}
 
 const app = express();
 app.use(express.json());
