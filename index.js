@@ -29,6 +29,6 @@ const mainRoutes = require('./app/index');
 app.use('/', mainRoutes);
 
 app.listen(port, () => {
-    console.log(`Running peek on port ${port}`);
-    console.log(`peek is now availbe under http://127.0.0.1:${port}`);
+    console.log(`🔨 Running peek on port ${port}`);
+    console.log(`✅ peek is now available under http://127.0.0.1:${port}`);
 });
