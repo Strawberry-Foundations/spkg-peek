@@ -14,6 +14,7 @@ router.get('/', (req, res) => {
 
 // Endpoints
 router.use('/packages/fetch', require('./packages/fetch'));
+router.use('/packages/fetchAll', require('./packages/fetchAll'));
 router.use('/packages/search', require('./packages/search'));
 
 module.exports = router;
