@@ -15,6 +15,7 @@ router.get('/', (req, res) => {
 // Endpoints
 router.use('/packages/fetch', require('./packages/fetch'));
 router.use('/packages/search', require('./packages/search'));
+router.use('/repo', require('./repo/index'));
 router.use('/server', require('./server/index'))
 
 module.exports = router;

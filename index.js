@@ -8,7 +8,13 @@ const fileName = path.join(__dirname, 'config.json');
 const defaultConfig = {
     "port": 3085,
     "dbpath": "/var/spkg/packages.db",
-    "provide_repo_data": false
+    "provide_server_data": false,
+    "maintainers": [
+        {
+            "name": "admin", 
+            "email": "admin@localhost"
+        }
+    ]
 }
 if (!fs.existsSync(fileName)) {
     fs.writeFileSync(fileName, JSON.stringify(defaultConfig, null, 4));
