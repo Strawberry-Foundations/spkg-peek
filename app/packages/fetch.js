@@ -30,7 +30,7 @@ router.get('/', (req, res) => {
         }
         res.json({
             message: 'success',
-            package: rows
+            packages: rows
         });
     });
 });
