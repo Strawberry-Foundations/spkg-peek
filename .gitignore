@@ -3,3 +3,4 @@ package-lock.json
 test.db
 
 config.json
+.DS_Store
