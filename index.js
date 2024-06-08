@@ -1,6 +1,19 @@
 const express = require('express');
+const fs = require('fs');
 const path = require('path');
 const favicon = require('serve-favicon');
+
+// Check if config exists, if not, use default
+const fileName = path.join(__dirname, 'config.json');
+const defaultConfig = {
+    "port": 3085,
+    "dbpath": "/var/spkg/packages.db"
+}
+if (!fs.existsSync(fileName)) {
+    fs.writeFileSync(fileName, JSON.stringify(defaultConfig, null, 4));
+    console.log(`${fileName} created with default values`);
+}
+
 const config = require('./config.json');
 
 // Setup app
