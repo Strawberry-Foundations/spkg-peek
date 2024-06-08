@@ -7,7 +7,8 @@ const favicon = require('serve-favicon');
 const fileName = path.join(__dirname, 'config.json');
 const defaultConfig = {
     "port": 3085,
-    "dbpath": "/var/spkg/packages.db"
+    "dbpath": "/var/spkg/packages.db",
+    "provide_repo_data": false
 }
 if (!fs.existsSync(fileName)) {
     fs.writeFileSync(fileName, JSON.stringify(defaultConfig, null, 4));
