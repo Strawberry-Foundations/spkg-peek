@@ -4,17 +4,22 @@ const db = require('../../db');
 
 router.get('/', (req, res) => {
     const query = req.query.q;
+    let sql, params;
 
     if (!query || query.trim() === '') {
-        return res.status(400).json({ message: "Query parameter 'q' cannot be empty" });
+        sql = `
+            SELECT name, version, branch, arch, url, specfile, filename
+            FROM packages
+        `;
+        params = [];
+    } else {
+        sql = `
+            SELECT name, version, branch, arch, url, specfile, filename
+            FROM packages
+            WHERE name = ?
+        `;
+        params = [query];
     }
-
-    const sql = `
-        SELECT name, version, branch, arch, url, specfile, filename
-        FROM packages
-        WHERE name = ?
-    `;
-    const params = [query];
 
     db.all(sql, params, (err, rows) => {
         if (err) {
@@ -25,7 +30,7 @@ router.get('/', (req, res) => {
         }
         res.json({
             message: 'success',
-            package: rows[0]
+            package: rows
         });
     });
 });
