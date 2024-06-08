@@ -6,7 +6,7 @@ const version = require('../../package.json').version;
 
 router.get('/', (req, res) => {
     if (!dataAllowed) {
-        res.status(401).json({ message: 'This instance has disabled repo data' });
+        return res.status(401).json({ message: 'This instance has disabled repo data' });
     }
     
     res.json({ 
