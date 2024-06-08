@@ -1,6 +1,6 @@
 {
   "name": "spkg-peek",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "API for spkg repositories",
   "main": "index.js",
   "scripts": {
