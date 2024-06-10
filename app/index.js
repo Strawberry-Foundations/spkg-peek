@@ -15,6 +15,8 @@ router.get('/', (req, res) => {
 // Endpoints
 router.use('/packages/fetch', require('./packages/fetch'));
 router.use('/packages/search', require('./packages/search'));
+router.use('/plugins/fetch', require('./plugins/fetch'));
+router.use('/plugins/search', require('./plugins/search'));
 router.use('/repo', require('./repo/index'));
 router.use('/server', require('./server/index'))
 
