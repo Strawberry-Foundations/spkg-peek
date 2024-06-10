@@ -26,7 +26,7 @@ function connectDatabase() {
 }
 
 function checkIfTableExists(table) {
-    const query = `SELECT name FROM sqlite_master WHERE type='${table}' AND name='packages`;";
+    const query = `SELECT name FROM sqlite_master WHERE type='table' AND name='${table}';`;
     
     db.get(query, (err, row) => {
         if (err) {
