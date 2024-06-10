@@ -16,7 +16,8 @@ function connectDatabase() {
             if (err) {
                 console.error("❌ Database error: ", err.message);
             } else {
-                checkIfTableExists();
+                checkIfTableExists("packages");
+                checkIfTableExists("plugins");
                 console.log("✅ Database connected");
             }
         });
@@ -24,8 +25,8 @@ function connectDatabase() {
     return db;
 }
 
-function checkIfTableExists() {
-    const query = "SELECT name FROM sqlite_master WHERE type='table' AND name='packages';";
+function checkIfTableExists(table) {
+    const query = `SELECT name FROM sqlite_master WHERE type='${table}' AND name='packages`;";
     
     db.get(query, (err, row) => {
         if (err) {
@@ -33,9 +34,9 @@ function checkIfTableExists() {
             process.exit(1);
         }
         if (row) {
-            console.log("✅ Table 'packages' exists");
+            console.log(`✅ Table '${table}' exists`);
         } else {
-            console.log("❌ Table 'packages' does not exist");
+            console.log(`❌ Table ${table}' does not exist`);
             process.exit(1);
         }
     });
