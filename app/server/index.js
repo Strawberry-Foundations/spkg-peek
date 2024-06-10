@@ -16,7 +16,8 @@ router.get('/', (req, res) => {
             version: version,
             os: process.platform,
             arch: process.arch,
-            nodejs: process.version
+            nodejs: process.version,
+            apiuptime: process.uptime(),
         }
     });
 });
